@@ -5,10 +5,10 @@ p
 
 table
   tr
-    th タスク名
-    th 優先度
-    th 終了期限
-    th ステータス
+    th = Task.human_attribute_name(:name)
+    th = Task.human_attribute_name(:priority)
+    th = Task.human_attribute_name(:expired_on)
+    th = Task.human_attribute_name(:status)
   - @tasks.each do |task|
     tr
       td = task.name

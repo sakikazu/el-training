@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      tasks: "タスク"
+    attributes:
+      task:
+        name: "タスク名"
+        description: "説明"
+        priority: "優先度"
+        expired_on: "終了期限"
+        status: "ステータス"
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する"
+    label:
+      back: "戻る"
