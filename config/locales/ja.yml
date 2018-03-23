@@ -9,6 +9,13 @@ ja:
         priority: "優先度"
         expired_on: "終了期限"
         status: "ステータス"
+        created_at: "作成日時"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      short: "%Y/%m/%d %H:%M"
+      date: "%Y/%m/%d"
   helpers:
     submit:
       create: "登録する"

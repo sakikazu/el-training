@@ -3,6 +3,13 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+    if params[:sort_by_created_at].present?
+      sort = params[:sort_by_created_at] == "asc" ? "asc" : "desc"
+      @tasks = @tasks.order("created_at #{sort}")
+      @sort_by_created_at = sort == "asc" ? "desc" : "asc"
+    else
+      @sort_by_created_at = "asc"
+    end
   end
 
   def show

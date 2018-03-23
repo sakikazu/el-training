@@ -3,19 +3,24 @@ h1 タスク一覧
 p
   = link_to "新規作成", new_task_path
 
-table
-  tr
-    th = Task.human_attribute_name(:name)
-    th = Task.human_attribute_name(:priority)
-    th = Task.human_attribute_name(:expired_on)
-    th = Task.human_attribute_name(:status)
-  - @tasks.each do |task|
+table.tasks_list
+  thead
     tr
-      td = task.name
-      td = task.priority
-      td = task.expired_on
-      td = task.status
-      td
-        = link_to "詳細", task_path(task)
-        = link_to "編集", edit_task_path(task)
-        = link_to "削除", task_path(task), method: :delete
+      th = Task.human_attribute_name(:name)
+      th = Task.human_attribute_name(:priority)
+      th = Task.human_attribute_name(:expired_on)
+      th = Task.human_attribute_name(:status)
+      th = link_to Task.human_attribute_name(:created_at), tasks_path(sort_by_created_at: @sort_by_created_at)
+      th
+  tbody
+    - @tasks.each do |task|
+      tr
+        td = task.name
+        td = task.priority
+        td = task.expired_on
+        td = task.status
+        td = l task.created_at
+        td
+          = link_to "詳細", task_path(task)
+          = link_to "編集", edit_task_path(task)
+          = link_to "削除", task_path(task), method: :delete
