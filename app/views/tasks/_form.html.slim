@@ -1,0 +1,7 @@
+= form_for @task do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.select :priority, [["低", 1]]
+
+  p
+    = f.submit

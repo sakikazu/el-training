@@ -1,0 +1,21 @@
+h1 タスク一覧
+
+p
+  = link_to "新規作成", new_task_path
+
+table
+  tr
+    th タスク名
+    th 優先度
+    th 終了期限
+    th ステータス
+  - @tasks.each do |task|
+    tr
+      td = task.name
+      td = task.priority
+      td = task.expired_on
+      td = task.status
+      td
+        = link_to "詳細", task_path(task)
+        = link_to "編集", edit_task_path(task)
+        = link_to "削除", task_path(task), method: :delete
