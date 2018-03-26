@@ -8,9 +8,9 @@ table.tasks_list
     tr
       th = Task.human_attribute_name(:name)
       th = Task.human_attribute_name(:priority)
-      th = Task.human_attribute_name(:expired_on)
+      th = link_to Task.human_attribute_name(:expired_on), tasks_path(sort_by_expired_on: @sort_by_expired_on || "asc" )
       th = Task.human_attribute_name(:status)
-      th = link_to Task.human_attribute_name(:created_at), tasks_path(sort_by_created_at: @sort_by_created_at)
+      th = link_to Task.human_attribute_name(:created_at), tasks_path(sort_by_created_at: @sort_by_created_at || "asc" )
       th
   tbody
     - @tasks.each do |task|

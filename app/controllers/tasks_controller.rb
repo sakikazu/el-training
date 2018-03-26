@@ -7,8 +7,10 @@ class TasksController < ApplicationController
       sort = params[:sort_by_created_at] == "asc" ? "asc" : "desc"
       @tasks = @tasks.order("created_at #{sort}")
       @sort_by_created_at = sort == "asc" ? "desc" : "asc"
-    else
-      @sort_by_created_at = "asc"
+    elsif params[:sort_by_expired_on].present?
+      sort = params[:sort_by_expired_on] == "asc" ? "asc" : "desc"
+      @tasks = @tasks.order("expired_on #{sort}")
+      @sort_by_expired_on = sort == "asc" ? "desc" : "asc"
     end
   end
 
