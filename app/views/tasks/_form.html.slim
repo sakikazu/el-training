@@ -4,11 +4,15 @@
     ul
       - @task.errors.each do |key, message|
         li = "#{key}#{message}"
-  = f.label :name, Task.human_attribute_name(:name)
-  = f.text_field :name
-  = f.label :priority, Task.human_attribute_name(:priority)
-  = f.select :priority, [["低", 1]]
-  = f.date_select :expired_on, { use_month_numbers: true }
+  p
+    = f.label :name, Task.human_attribute_name(:name)
+    = f.text_field :name
+  p
+    = f.label :priority, Task.human_attribute_name(:priority)
+    = f.select :priority, [["低", 1]]
+  p
+    = f.label :expired_on, Task.human_attribute_name(:expired_on)
+    = f.date_select :expired_on, { use_month_numbers: true }
 
   p
     = f.submit

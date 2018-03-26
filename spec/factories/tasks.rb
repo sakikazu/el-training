@@ -4,7 +4,7 @@ FactoryGirl.define do
     description "MyText"
     user_id 1
     priority 1
-    expired_on "2018-03-23"
+    expired_on 1.week.from_now
     status 1
   end
 end
