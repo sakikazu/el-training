@@ -20,4 +20,5 @@ test:
 
 production:
   <<: *default
-  database: eltraining
+  adapter: pg
+  database: db/production.pg
