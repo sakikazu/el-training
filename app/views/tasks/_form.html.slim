@@ -1,8 +1,14 @@
 = form_for @task do |f|
+  - if @task.errors.present?
+    p エラーがあります。
+    ul
+      - @task.errors.each do |key, message|
+        li = "#{key}#{message}"
   = f.label :name, Task.human_attribute_name(:name)
   = f.text_field :name
   = f.label :priority, Task.human_attribute_name(:priority)
   = f.select :priority, [["低", 1]]
+  = f.date_select :expired_on, { use_month_numbers: true }
 
   p
     = f.submit

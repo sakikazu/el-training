@@ -10,6 +10,16 @@ ja:
         expired_on: "終了期限"
         status: "ステータス"
         created_at: "作成日時"
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+      past_date: "は未来の日付にしてください"
+  date:
+    order:
+    - :year
+    - :month
+    - :day
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
