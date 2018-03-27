@@ -14,6 +14,12 @@ class Task < ApplicationRecord
     completed: 2
   }
 
+  enum priority: {
+    低: 0,
+    中: 1,
+    高: 2
+  }
+
   aasm column: :status, enum: true do
     state :waiting, initial: true
     state :working
