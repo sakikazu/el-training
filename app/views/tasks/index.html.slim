@@ -6,6 +6,7 @@ p
 table.tasks_list
   thead
     tr
+      th ID
       th = Task.human_attribute_name(:name)
       th = Task.human_attribute_name(:priority)
       th = link_to Task.human_attribute_name(:expired_on), tasks_path(sort_by_expired_on: @sort_by_expired_on || "asc" )
@@ -15,6 +16,7 @@ table.tasks_list
   tbody
     - @tasks.each do |task|
       tr
+        td = task.id
         td = task.name
         td = task.priority
         td = l task.expired_on if task.expired_on.present?

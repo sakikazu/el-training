@@ -32,12 +32,10 @@ class TasksController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @task = Task.new(task_params)
-    if @task.save
+    if @task.update(task_params)
       redirect_to tasks_path, flash: { error: "タスクを更新しました。" }
     else
       flash[:error] = "更新に失敗しました。"
@@ -53,7 +51,9 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :priority, :expired_on, :status)
+    params.require(:task).permit(:name, :description, :priority, :expired_on, :status).tap do |prm|
+      prm[:status] = prm[:status].to_i
+    end
   end
 
   def set_task
