@@ -1,5 +1,7 @@
-h1 = @task.name
+.row
+  .col-sm-8.col-sm-offset-2
+    h2.page-header = @task.name
+    p
+      = @task.status
 
-p = @task.priority
-
-= link_to t('helpers.label.back'), :back
+    = link_to t('helpers.label.back'), tasks_path, class: "btn btn-default"

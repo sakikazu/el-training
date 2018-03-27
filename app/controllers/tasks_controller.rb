@@ -32,7 +32,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to tasks_path, flash: { error: "タスクを作成しました。" }
+      redirect_to tasks_path, flash: { info: "タスクを作成しました。" }
     else
       flash[:error] = "作成に失敗しました。"
       render :new
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, flash: { error: "タスクを更新しました。" }
+      redirect_to tasks_path, flash: { info: "タスクを更新しました。" }
     else
       flash[:error] = "更新に失敗しました。"
       render :edit

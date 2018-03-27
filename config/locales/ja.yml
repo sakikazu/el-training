@@ -35,3 +35,10 @@ ja:
       submit: "保存する"
     label:
       back: "戻る"
+  views:
+    pagination:
+      previous: "<< 前ページ"
+      next: "次ページ >>"
+      first: "最初"
+      last: "最後"
+      truncate: "..."
