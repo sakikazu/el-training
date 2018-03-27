@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.search(params[:task])
+    @q = params[:task].present? ? Task.new(task_params) : Task.new
+
     if params[:sort_by_created_at].present?
       sort = params[:sort_by_created_at] == "asc" ? "asc" : "desc"
       @tasks = @tasks.order("created_at #{sort}")
@@ -51,8 +53,8 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :priority, :expired_on, :status).tap do |prm|
-      prm[:status] = prm[:status].to_i
+    params.require(:task).permit(:name, :description, :priority, :expired_on, :status, :status_for_search).tap do |prm|
+      prm[:status] = prm[:status].to_i if prm[:status].present?
     end
   end
 

@@ -5,16 +5,16 @@
       - @task.errors.each do |key, message|
         li = "#{key}#{message}"
   p
-    = f.label :name, Task.human_attribute_name(:name)
+    = f.label :name
     = f.text_field :name
   p
-    = f.label :priority, Task.human_attribute_name(:priority)
+    = f.label :priority
     = f.select :priority, [["低", 1], ["高", 3]]
   p
-    = f.label :expired_on, Task.human_attribute_name(:expired_on)
+    = f.label :expired_on
     = f.date_select :expired_on, { use_month_numbers: true }
   p
-    = f.label :status, Task.human_attribute_name(:status)
+    = f.label :status
     = f.select :status, Task.statuses, selected: @task.status_before_type_cast
   p
     = f.submit

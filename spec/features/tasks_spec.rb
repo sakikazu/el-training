@@ -37,9 +37,9 @@ RSpec.feature 'Tasks', type: :feature do
           end
 
           it 'sort by created_at ASC' do
-            expect(all('table.tasks_list > tbody > tr')[0].all('td')[4].text).to eq '2018/03/26 18:50'
-            expect(all('table.tasks_list > tbody > tr')[1].all('td')[4].text).to eq '2018/03/26 19:50'
-            expect(all('table.tasks_list > tbody > tr')[4].all('td')[4].text).to eq '2018/03/27 06:50'
+            expect(all('table.tasks_list > tbody > tr')[0].all('td')[5].text).to eq '2018/03/26 18:50'
+            expect(all('table.tasks_list > tbody > tr')[1].all('td')[5].text).to eq '2018/03/26 19:50'
+            expect(all('table.tasks_list > tbody > tr')[4].all('td')[5].text).to eq '2018/03/27 06:50'
           end
         end
 
@@ -50,9 +50,9 @@ RSpec.feature 'Tasks', type: :feature do
           end
 
           it 'sort by created_at DESC' do
-            expect(all('table.tasks_list > tbody > tr')[0].all('td')[4].text).to eq '2018/03/27 06:50'
-            expect(all('table.tasks_list > tbody > tr')[1].all('td')[4].text).to eq '2018/03/26 22:50'
-            expect(all('table.tasks_list > tbody > tr')[4].all('td')[4].text).to eq '2018/03/26 18:50'
+            expect(all('table.tasks_list > tbody > tr')[0].all('td')[5].text).to eq '2018/03/27 06:50'
+            expect(all('table.tasks_list > tbody > tr')[1].all('td')[5].text).to eq '2018/03/26 22:50'
+            expect(all('table.tasks_list > tbody > tr')[4].all('td')[5].text).to eq '2018/03/26 18:50'
           end
         end
       end
@@ -69,9 +69,9 @@ RSpec.feature 'Tasks', type: :feature do
           end
 
           it 'sort by expired_on ASC' do
-            expect(all('table.tasks_list > tbody > tr')[0].all('td')[2].text).to eq '2018/03/26'
-            expect(all('table.tasks_list > tbody > tr')[1].all('td')[2].text).to eq '2018/03/27'
-            expect(all('table.tasks_list > tbody > tr')[4].all('td')[2].text).to eq '2018/04/04'
+            expect(all('table.tasks_list > tbody > tr')[0].all('td')[3].text).to eq '2018/03/26'
+            expect(all('table.tasks_list > tbody > tr')[1].all('td')[3].text).to eq '2018/03/27'
+            expect(all('table.tasks_list > tbody > tr')[4].all('td')[3].text).to eq '2018/04/04'
           end
         end
 
@@ -82,9 +82,9 @@ RSpec.feature 'Tasks', type: :feature do
           end
 
           it 'sort by expired_on DESC' do
-            expect(all('table.tasks_list > tbody > tr')[0].all('td')[2].text).to eq '2018/04/04'
-            expect(all('table.tasks_list > tbody > tr')[1].all('td')[2].text).to eq '2018/03/30'
-            expect(all('table.tasks_list > tbody > tr')[4].all('td')[2].text).to eq '2018/03/26'
+            expect(all('table.tasks_list > tbody > tr')[0].all('td')[3].text).to eq '2018/04/04'
+            expect(all('table.tasks_list > tbody > tr')[1].all('td')[3].text).to eq '2018/03/30'
+            expect(all('table.tasks_list > tbody > tr')[4].all('td')[3].text).to eq '2018/03/26'
           end
         end
       end
