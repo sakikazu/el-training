@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.search(params[:task])
+    @tasks = Task.search(params[:task]).page(params[:page]).per(30)
     @q = params[:task].present? ? Task.new(task_params) : Task.new
 
     if params[:sort].present?
