@@ -28,4 +28,41 @@ RSpec.describe Task, type: :model do
       end
     end
   end
+
+  describe '.search' do
+    subject { described_class.search(searh_params) }
+
+    before do
+      create(:task, name: "task1", status: 1)
+      create(:task, name: "task2", status: 1)
+      create(:task, name: "task22", status: 2)
+      create(:task, name: "task222", status: 1)
+      create(:task, name: "task3", status: 1)
+      create(:task, name: "task334", status: 1)
+      create(:task, name: "task33", status: 0)
+      create(:task, name: "task4", status: 1)
+      create(:task, name: "task4", status: 2)
+    end
+
+    context 'by name only' do
+      let(:searh_params) { { name: "task2", status_for_search: nil } }
+      it "should found 3 records" do
+        expect(subject.size).to eq 3
+      end
+    end
+
+    context 'by status only' do
+      let(:searh_params) { { name: nil, status_for_search: 2 } }
+      it "should found 2 records" do
+        expect(subject.size).to eq 2
+      end
+    end
+
+    context 'by name and status' do
+      let(:searh_params) { { name: "task2", status_for_search: 1 } }
+      it "should found 2 records" do
+        expect(subject.size).to eq 2
+      end
+    end
+  end
 end

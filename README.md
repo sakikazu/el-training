@@ -61,6 +61,8 @@ featureスペックがうまく書けるかどうかが肝心。
     - https://qiita.com/satour/items/fe838dc21dc95df95c62
   - 検索フォームを便利に作成できるようにする：ransack
     - https://qiita.com/nishina555/items/2c1f8bae980e426519bc
+- 検索インデックスについては、元々遅いSQLではないので改善はわかりづらいが、explainでtypeの確認くらいはしておく
+  - ref. https://qiita.com/katsukii/items/3409e3c3c96580d37c2b
 
 ### ステップ19まで
 - ここまで来たら初めてレビュー。
