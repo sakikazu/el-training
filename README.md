@@ -64,6 +64,12 @@ featureスペックがうまく書けるかどうかが肝心。
 - 検索インデックスについては、元々遅いSQLではないので改善はわかりづらいが、explainでtypeの確認くらいはしておく
   - ref. https://qiita.com/katsukii/items/3409e3c3c96580d37c2b
 
+### ステップ18: デザインを当てよう
+- twitter bootstrapのgem導入
+  - どのgemがいいかわからないがとりあえず```bootstrap-sass```
+- kaminariにbootstrapを適用
+  - ```$ bin/rails g kaminari:views bootstrap3 -e slim```
+
 ### ステップ19まで
 - ここまで来たら初めてレビュー。
 - これ以降はPR出して適宜レビュー。

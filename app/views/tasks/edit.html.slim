@@ -1,3 +1,8 @@
-h1 タスク編集
+.row
+  .col-sm-8.col-sm-offset-2
+    .panel.panel-default
+      .panel-heading タスク編集
+      .panel-body
+        = render "form"
 
-= render "form"
+    = link_to t('helpers.label.back'), tasks_path, class: "btn btn-default"
