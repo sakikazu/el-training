@@ -18,12 +18,13 @@ table.tasks_list
     tr
       th ID
       th = Task.human_attribute_name(:name)
-      th = Task.human_attribute_name(:priority)
+      th = link_to Task.human_attribute_name(:priority),
+              tasks_path(sort: { priority: @sort_by_priority || "asc" }, task: { name: @q.name, status_for_search: @q.status_for_search })
       th = link_to Task.human_attribute_name(:expired_on),
-              tasks_path(sort_by_expired_on: @sort_by_expired_on || "asc", task: { name: @q.name, status_for_search: @q.status_for_search })
+              tasks_path(sort: { expired_on: @sort_by_expired_on || "asc" }, task: { name: @q.name, status_for_search: @q.status_for_search })
       th = Task.human_attribute_name(:status)
       th = link_to Task.human_attribute_name(:created_at),
-              tasks_path(sort_by_created_at: @sort_by_created_at || "asc", task: { name: @q.name, status_for_search: @q.status_for_search })
+              tasks_path(sort: { created_at: @sort_by_created_at || "asc" }, task: { name: @q.name, status_for_search: @q.status_for_search })
       th
   tbody
     - @tasks.each do |task|
