@@ -17,9 +17,9 @@ table.tasks_list
       tr
         td = task.name
         td = task.priority
-        td = task.expired_on
+        td = l task.expired_on if task.expired_on.present?
         td = task.status
-        td = l task.created_at
+        td = l task.created_at, format: :short
         td
           = link_to "詳細", task_path(task)
           = link_to "編集", edit_task_path(task)
