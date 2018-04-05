@@ -1,26 +1,49 @@
-h1 タスク一覧
+.row
+  .col-sm-8.col-sm-offset-2
+    .panel.panel-default
+      .panel-heading タスク検索
+      .panel-body
+        = form_for @q, url: tasks_path, method: :get, html: { class: 'form-inline' } do |f|
+          .form-group
+            = f.label :name, class: "label-control"
+            = f.text_field :name, class: "form-control"
+          .form-group
+            = f.label :status, class: "label-control"
+            = f.select :status_for_search, Task.statuses, { include_blank: true }, { class: "form-control" }
+          = f.submit :search, class: "btn btn-success"
 
-p
-  = link_to "新規作成", new_task_path
+    p.text-right
+      = link_to "新規作成", new_task_path, class: "btn btn-default"
 
-table.tasks_list
-  thead
-    tr
-      th = Task.human_attribute_name(:name)
-      th = Task.human_attribute_name(:priority)
-      th = link_to Task.human_attribute_name(:expired_on), tasks_path(sort_by_expired_on: @sort_by_expired_on || "asc" )
-      th = Task.human_attribute_name(:status)
-      th = link_to Task.human_attribute_name(:created_at), tasks_path(sort_by_created_at: @sort_by_created_at || "asc" )
-      th
-  tbody
-    - @tasks.each do |task|
-      tr
-        td = task.name
-        td = task.priority
-        td = l task.expired_on if task.expired_on.present?
-        td = task.status
-        td = l task.created_at, format: :short
-        td
-          = link_to "詳細", task_path(task)
-          = link_to "編集", edit_task_path(task)
-          = link_to "削除", task_path(task), method: :delete
+    .text-center
+      = paginate @tasks
+
+    table.table.table-bordered.table-hover.tasks_list
+      thead
+        tr
+          th ID
+          th = Task.human_attribute_name(:name)
+          th = link_to Task.human_attribute_name(:priority),
+                  tasks_path(sort: { priority: @sort_by_priority || "asc" }, task: { name: @q.name, status_for_search: @q.status_for_search })
+          th = link_to Task.human_attribute_name(:expired_on),
+                  tasks_path(sort: { expired_on: @sort_by_expired_on || "asc" }, task: { name: @q.name, status_for_search: @q.status_for_search })
+          th = Task.human_attribute_name(:status)
+          th = link_to Task.human_attribute_name(:created_at),
+                  tasks_path(sort: { created_at: @sort_by_created_at || "asc" }, task: { name: @q.name, status_for_search: @q.status_for_search })
+          th
+      tbody
+        - @tasks.each do |task|
+          tr
+            td = task.id
+            td = link_to task.name, task_path(task)
+            td = task.priority
+            td = l task.expired_on if task.expired_on.present?
+            td = task.status
+            td = l task.created_at, format: :short
+            td
+              = link_to "編集", edit_task_path(task), class: "btn btn-default btn-sm"
+              = link_to "削除", task_path(task), method: :delete,
+                      data: { confirm: "本当に削除してもよろしいですか？" },
+                      class: "btn btn-default btn-sm"
+    .text-center
+      = paginate @tasks
