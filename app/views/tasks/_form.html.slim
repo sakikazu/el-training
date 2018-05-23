@@ -22,5 +22,9 @@
     .col-sm-10
       = f.select :status, Task.statuses, { selected: @task.status_before_type_cast }, { class: "form-control" }
   .form-group
+    = f.label 'ラベル', class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :labels_text, class: "form-control"
+  .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Submit", class: "btn btn-success"

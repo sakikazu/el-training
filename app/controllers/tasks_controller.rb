@@ -40,6 +40,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task.labels_text = @task.labels.pluck(:name).uniq.join(", ")
   end
 
   def update
@@ -59,7 +60,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :priority, :expired_on, :status, :status_for_search).tap do |prm|
+    params.require(:task).permit(:name, :description, :priority, :expired_on, :status, :status_for_search, :labels_text).tap do |prm|
       prm[:status] = prm[:status].to_i if prm[:status].present?
       prm[:priority] = prm[:priority].to_i if prm[:priority].present?
     end
