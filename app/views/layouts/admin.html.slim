@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title
+      | ElTraining
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body[class="#{controller.controller_name}_controller"]
+    .container-fluid
+      nav.navbar.navbar-default[class = "bg_gray"]
+        .container-fluid
+          .navbar-header
+            = link_to "ElTraining", root_path, class: "navbar-brand"
+          ul.nav.navbar-nav
+            li[class = "#{'active' if controller_name == 'tasks'}"]
+              = link_to "タスク", tasks_path
+          / ul.nav.navbar-nav.navbar-right
+          /   li = link_to current_user&.fullname, edit_profile_users_path
+          /   li
+              / = link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}
+      .contents
+        - if flash[:error].present?
+          .alert.alert-danger = flash[:error]
+        - if flash[:info].present?
+          .alert.alert-info = flash[:info]
+        = yield
+
+    footer
+      p from el-training #{Date.today.year}

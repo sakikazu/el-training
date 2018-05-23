@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root 'tasks#index'
+    resources :tasks
+  end
+
   resources :tasks
 
   root 'tasks#index'
