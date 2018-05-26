@@ -4,6 +4,10 @@
 https://github.com/everyleaf/el-training
 のメンター用のリポジトリ
 
+## 画面
+- STEP18の状態
+<img width="1365" alt="2018-05-26 20 26 12" src="https://user-images.githubusercontent.com/745130/40575621-33fc2aaa-6123-11e8-8c52-8c69a6c48013.png">
+
 ## ステップごとの留意事項
 
 ### ステップ1: Railsの開発環境を構築しよう
