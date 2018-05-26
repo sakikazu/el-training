@@ -25,6 +25,16 @@ RSpec.feature 'Tasks', type: :feature do
       expect(all('tbody tr').size).to eq 5
     end
 
+    describe 'delete', js: true do
+      it 'is deleted task' do
+        expect {
+          all('table.tasks_list tbody tr')[0].find_link('削除').click
+          page.accept_confirm
+          expect(page).to have_content 'タスクを削除しました。'
+        }.to change(Task, :count).by(-1)
+      end
+    end
+
     describe 'sort' do
       describe 'by created_at' do
         before do

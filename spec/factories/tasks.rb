@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
-    name "MyString"
+    name "MyString#{n}"
     description "MyText"
     user_id 1
     priority 1
